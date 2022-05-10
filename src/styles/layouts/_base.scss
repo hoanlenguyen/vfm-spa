@@ -1,0 +1,394 @@
+// BEGIN APPLICATION LEVEL //
+
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  &.mobile.openSidebar {
+    position: fixed;
+    top: 0;
+  }
+}
+
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sidebarWidth});
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+}
+
+.mobile .fixed-header {
+  width: 100%;
+}
+
+.app-main {
+  /* 90= navbar  50  + footer 40*/
+  min-height: calc(100vh - 90px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #eef0f8;
+  padding: 1.8rem;
+
+  @media (max-width: 576px) {
+    padding: 1.25rem;
+  }
+  @media (min-width: 577px) and (max-width: 991px) {
+    padding: 1.5rem;
+  }
+//   $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// ) !default;
+}
+
+.fixed-header + .app-main {
+  padding-top: 50px;
+}
+
+.hasTagsView {
+  .app-main {
+    /* 125 = navbar + tags-view + footer = 50 + 35 + 40*/
+    min-height: calc(100vh - 125px);
+  }
+
+  .fixed-header + .app-main {
+    padding-top: 84px;
+  }
+}
+
+// fix css style bug in open el-dialog
+.el-popup-parent--hidden {
+  .fixed-header {
+    padding-right: 15px;
+  }
+}
+
+footer {
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.6rem;
+}
+
+// END APPLICATION LEVEL //
+
+// BEGIN PAGE LEVEL //
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  min-height: calc(100vh - 6rem);
+  padding: 2.4rem;
+
+  background-color: $color-light-l20;
+}
+
+.navigation-bar-container {
+  + .page-container {
+    max-width: calc(100% - 5.2rem);
+  }
+
+  &.for-navigation-bar-static {
+    + .page-container {
+      max-width: calc(100% - 24rem);
+    }
+  }
+}
+
+.page-header {
+  margin-bottom: -2.4rem;
+  padding-bottom: 2.4rem;
+
+  + .page-body {
+    margin-top: 2.4rem;
+  }
+}
+
+.page-body {
+  flex-grow: 1;
+
+  margin: -2.4rem;
+  padding: 2.4rem;
+
+  background-color: $color-white;
+}
+
+@media (max-width: 767px) {
+  .page-container {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  .navigation-bar-container {
+    + .page-container {
+      max-width: 100%;
+    }
+
+    &.for-navigation-bar-static {
+      + .page-container {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .page-actions-container {
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+
+    background-color: $color-light-l16;
+
+    .btn-group {
+      width: 100%;
+
+      .btn {
+        flex-grow: 1;
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  .page-body {
+    flex-grow: 1;
+
+    margin: -2.4rem -1.6rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    background-color: $color-white;
+  }
+}
+
+// END PAGE LEVEL //
+
+// BEGIN DIVIDER //
+
+hr {
+  &.section-divider {
+    width: 8rem;
+    height: 0.4rem;
+
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+    margin-left: 0;
+
+    text-align: left; // Fix Edge alignment issue
+
+    border-width: 4px 0 0;
+    border-style: solid;
+    border-color: $color-light-l12;
+  }
+
+  &.right-divider {
+    height: 100%;
+
+    margin-right: 2.4rem;
+    margin-left: 2.4rem;
+
+    border-width: 0 4px 0 0;
+    border-style: solid;
+    border-color: $color-light-l12;
+  }
+}
+
+.with-divider-right {
+  border-right: 1px solid $color-light-l12;
+}
+
+.with-divider-left {
+  border-left: 1px solid $color-light-l12;
+}
+
+// END DIVIDER //
+
+// BEGIN LIST //
+
+.list-container {
+  display: block;
+}
+
+.list-item {
+  padding: 1.2rem 2.4rem;
+  border-bottom: 1px solid $color-light-l16;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.card-body > .list-container {
+  margin: -2.4rem;
+}
+
+.card--mini .card-body > .list-container {
+  margin: -1.6rem;
+
+  .list-item {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+}
+
+.list-group-heading {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+
+  text-align: center;
+
+  background-color: $color-light-l16;
+  border-bottom: 1px solid $color-light-l12;
+
+  &:not(.on-top) {
+    border-top: 1px solid $color-light-l12;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-body > .list-container {
+    margin-left: -1.6rem;
+    margin-right: -1.6rem;
+
+    .list-item {
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
+    }
+  }
+}
+
+// END LIST //
+
+// BEGIN LOADING //
+
+.loading {
+  position: relative;
+
+  min-height: 4.8rem;
+
+  pointer-events: none;
+
+  &:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+
+    @include loading($loading-lg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    animation: loading 1s linear infinite;
+  }
+
+  &:after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 19;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba($color-white, 0.8);
+  }
+}
+
+// END LOADING //
+
+// BEGIN BACKTOP //
+
+.backtop {
+  position: fixed;
+  right: 2.4rem;
+  bottom: 2.4rem;
+  z-index: 1984;
+
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+
+  background-color: rgba($color-white, 0.5);
+
+  border-radius: 2rem;
+
+  box-shadow: 0 0 0 1px $color-light-l12;
+
+  transition: all 0.3s;
+
+  i {
+    color: $color-grey-n0;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-blue-n0;
+    @include box-shadow-overlay();
+
+    cursor: pointer;
+
+    i {
+      color: $color-white;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .backtop {
+    right: 1.6rem;
+    bottom: 1.6rem;
+  }
+}
+
+// END BACKTOP //
+
+// BEGIN TOUCH DEVICE //
+
+.touch-device {
+  .app-container {
+    min-height: calc(var(--vh, 1vh) * 100 - 6rem);
+    max-height: calc(var(--vh, 1vh) * 100 - 6rem);
+  }
+
+  .page-container {
+    min-height: calc(var(--vh, 1vh) * 100 - 6rem);
+  }
+
+  .scrolly-viewport {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrolly-bar {
+    display: none !important;
+  }
+}
+
+// END TOUCH DEVICE //

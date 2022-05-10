@@ -1,0 +1,6 @@
+.el-tabs__item {
+    @include la-icons(1.6rem, 1.6rem);
+    @include fa-icons(1.6rem, 1.6rem);
+    @include el-icons(1.6rem, 1.6rem);
+    @include svg-icons(1.6rem);
+}

@@ -1,0 +1,44 @@
+.el-form {
+    &.el-form--label-top {
+        .el-form-item {
+            margin-bottom: 1.2rem;
+            .el-form-item__label {
+                line-height: 1.5;
+                padding-bottom: 0.5rem;
+            }
+
+            &.is-required{
+                .el-form-item__label {
+                    
+                &:before {
+                    content: ""!important;
+                    display: none;
+                  }
+                &:after {
+                    content: "*";
+                    color: #F72D1D;
+                    margin-left: 4px;
+                    font-size: 16px;
+                    line-height: 14px;
+                  }
+                }
+            }
+        }
+    }
+}
+.mce-tinymce{
+    box-shadow: none!important;
+    font-family: "Inter", sans-serif!important;
+    border-radius: 4px!important;
+    border-color: $--border-color-base!important;
+    overflow: hidden;
+}
+.mce-panel{
+    border-color: $--border-color-base!important;
+}
+.mce-container {
+    border-color: $--border-color-base!important;
+}
+.mce-top-part::before{
+    box-shadow: none!important;
+}

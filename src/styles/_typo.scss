@@ -1,0 +1,169 @@
+// BEGIN HEADINGS //
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $color-grey-d20;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.3333333333;
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 2.4rem;
+  line-height: 1.3333333333;
+
+  a {
+    color: $color-grey-d20;
+
+    &:hover,
+    &:focus {
+      color: $color-blue-n0;
+      text-decoration: none;
+    }
+  }
+}
+
+h4 {
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+h6 {
+  font-size: 1.2rem;
+  line-height: 1.3333333333;
+}
+
+// END HEADINGS //
+
+// BEGIN LABEL //
+
+label {
+  display: inline-block;
+
+  margin-bottom: 0;
+}
+
+// END LABEL //
+
+// BEGIN LINK //
+
+a {
+  color: $color-blue-n0;
+
+  &:active,
+  &:visited {
+    color: $color-blue-n0;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-blue-d12;
+  }
+
+  &.ext-link {
+    &:after {
+      content: "\f14c";
+      margin-left: 0.4rem;
+      vertical-align: middle;
+
+      @include fa-icons(12px, 12px);
+    }
+  }
+}
+
+// END LINK //
+
+// BEGIN PARAGRAPH //
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+// END PARAGRAPH //
+
+// BEGIN LIST //
+
+.list-default {
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+
+  li {
+    line-height: 1.4;
+  }
+}
+
+// END LIST //
+
+// BEGIN GENERAL //
+
+.required {
+  display: inline-block;
+
+  margin-left: 0.4rem;
+
+  color: $color-red-n0;
+
+  &:after {
+    content: "*";
+  }
+}
+
+.abbr {
+  border-bottom: 1px dotted;
+
+  cursor: help;
+
+  &:hover {
+    color: $color-blue-n0;
+  }
+}
+
+pre[class*="language-"] {
+  padding: 1.6rem !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  overflow-y: hidden !important;
+  background: #1d262f;
+  border-radius: 1rem!important;
+}
+
+code[class*="language-"] {
+  display: block;
+  padding: 0;
+  margin: -2rem 0;
+}
+
+// END GENERAL //

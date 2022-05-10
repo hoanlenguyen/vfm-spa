@@ -1,0 +1,72 @@
+<template>
+  <apexchart type="rangeBar" height="372" :options="chartOptions" :series="series"></apexchart>
+</template>
+
+<script>
+import apexchart from "vue-apexcharts";
+
+export default {
+  name: "ChartColumnBasic",
+  components: { apexchart },
+  data() {
+    return {
+      series: [
+        {
+          data: [
+            {
+              x: "Team A",
+              y: [1, 5],
+            },
+            {
+              x: "Team B",
+              y: [4, 6],
+            },
+            {
+              x: "Team C",
+              y: [5, 8],
+            },
+            {
+              x: "Team D",
+              y: [3, 11],
+            },
+          ],
+        },
+        {
+          data: [
+            {
+              x: "Team A",
+              y: [2, 6],
+            },
+            {
+              x: "Team B",
+              y: [1, 3],
+            },
+            {
+              x: "Team C",
+              y: [7, 8],
+            },
+            {
+              x: "Team D",
+              y: [5, 9],
+            },
+          ],
+        },
+      ],
+      chartOptions: {
+        chart: {
+          type: "rangeBar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+          },
+        },
+        dataLabels: {
+          enabled: true,
+        },
+      },
+    };
+  },
+};
+</script>

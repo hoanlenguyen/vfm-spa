@@ -1,0 +1,18 @@
+.svg-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  .svg-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: currentColor;
+    overflow: hidden;
+  }
+}
+
+.svg-external-icon {
+  background-color: currentColor;
+  mask-size: cover !important;
+  display: inline-block;
+}

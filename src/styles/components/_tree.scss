@@ -1,0 +1,133 @@
+// BEGIN TREE //
+
+.t-tree-container.tree {
+  > .tree-root {
+    margin: 0;
+    padding: 0;
+  }
+
+  .tree-node {
+    position: relative;
+
+    padding: 0 0 0 2.4rem;
+
+    &:before {
+      content: '';
+
+      display: block;
+
+      position: absolute;
+      top: 3.2rem;
+      left: 1.6rem;
+
+      width: 0;
+      height: calc(100% - 4rem);
+
+      border-left: 1px dashed $color-light-l04;
+    }
+
+    .tree-content {
+      padding: 0 !important;
+
+      border-radius: $border-radius-sm;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $color-light-l20;
+
+        .t-tree-item .item-actions {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .tree-arrow {
+    position: absolute;
+    left: .6rem;
+
+    width: 2rem;
+    margin-left: 0;
+
+    @include fa-icons(12px, 12px);
+
+    &.has-child {
+      &:after {
+        display: none;
+      }
+
+      &:before {
+        content: '\f067';
+        display: block;
+
+        color: $color-dark-d16;
+      }
+
+      &.expanded:before {
+        content: '\f068';
+      }
+    }
+
+    &:hover {
+      &:before {
+        color: $color-blue-n0;
+      }
+    }
+  }
+
+  .tree-anchor {
+    flex-basis: 100%;
+
+    margin-left: 0;
+    padding: .4rem .6rem;
+
+    line-height: 0;
+  }
+
+  .tree-input {
+    display: inline-block;
+
+    padding: .2rem .8rem;
+    height: auto;
+    width: auto;
+
+    font-size: 1.4rem;
+    line-height: 1.4;
+
+    border: 1px solid $color-light-l04;
+    border-radius: $border-radius-sm;
+  }
+
+  .t-tree-item {
+    display: flex;
+
+    width: 100%;
+    padding: .3rem 0;
+
+    .item-text {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+
+    .item-actions {
+      margin-left: auto;
+      visibility: hidden;
+
+      .btn-icon-sm + .btn-icon-sm {
+        margin-left: .4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .t-tree-container.tree {
+    .t-tree-item {
+      .item-actions {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// END TREE //

@@ -1,0 +1,181 @@
+@mixin border-left-radius($radius: $border-radius-md) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius: $border-radius-md) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-top-radius($radius: $border-radius-md) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius: $border-radius-md) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin box-shadow-raised() {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+@mixin box-shadow-overlay() {
+  box-shadow: 0 2px 8px 0 rgba(55, 58, 72, 0.12);
+}
+
+@mixin box-shadow-sticky() {
+  box-shadow: 0 4px 16px 0 rgba(55, 58, 72, 0.16);
+}
+
+@mixin box-shadow-popout() {
+  box-shadow: 0 8px 32px 0 rgba(55, 58, 72, 0.2);
+}
+
+@mixin border-default($border-color: $color-light-l08, $border-width: 1px, $radius: $border-radius-md) {
+  border: $border-width solid $border-color;
+  border-radius: $radius;
+}
+
+// Ascending
+// Used to evaluate Sass maps like our grid breakpoints.
+
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null or unit($num) == "%" {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+// Starts at zero
+// Used to ensure the min-width of the lowest breakpoint starts at 0.
+
+@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in #{$map-name} must start at 0, but starts at #{$first-value}.";
+  }
+}
+
+// BEGIN LOADING //
+
+@mixin loading($loading-type, $color: $color-blue-n0) {
+  $url: map-get($loading-type, url);
+  $size: map-get($loading-type, size);
+
+  width: #{$size/10 + "rem"};
+  height: #{$size/10 + "rem"};
+  margin-left: -#{$size/20 + "rem"};
+  margin-top: -#{$size/20 + "rem"};
+
+  background-image: url(str-replace($url, str-slice(inspect($color-blue-n0), 2), str-slice(inspect($color), 2)));
+}
+
+// END LOADING //
+
+// BEGIN MATERIAL ICONS //
+
+@mixin fa-icons($size: 20px, $fontSize: 20px) {
+  display: inline-block;
+  min-width: $size;
+  height: $size;
+
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 300;
+  font-style: normal;
+  font-size: $fontSize;
+  line-height: $size;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin fa-icons-resize($size: 20px, $fontSize: 20px) {
+  min-width: $size;
+  height: $size;
+  font-size: $fontSize;
+  line-height: $size;
+}
+
+// END MATERIAL ICONS //
+
+@mixin svg-icons($size: 1.4rem) {
+  [class^="svg-icon-"],
+  [class*=" svg-icon-"] {
+    .svg-icon {
+      width: $size;
+      height: $size;
+      line-height: $size;
+    }
+  }
+}
+
+@mixin fa-icons($size: 1.4rem, $fontSize: 1.4px) {
+  [class^="fa-"],
+  [class*=" fa-"] {
+    min-width: $size;
+    height: $size;
+    font-size: $fontSize;
+    line-height: $fontSize;
+    //vertical-align: middle;
+  }
+}
+
+@mixin la-icons($size: 1.4rem, $fontSize: 1.4px) {
+  [class^="la-"],
+  [class*=" la-"] {
+    min-width: $size;
+    height: $size;
+    font-size: $fontSize;
+    line-height: $fontSize;
+    //vertical-align: middle;
+  }
+}
+
+@mixin el-icons($size: 1.4rem, $fontSize: 1.4px) {
+  [class^="el-icon-"],
+  [class*=" el-icon-"] {
+    min-width: $size;
+    height: $size;
+    font-size: $fontSize;
+    line-height: $fontSize;
+    //vertical-align: middle;
+  }
+}
+
+@mixin not($ignoreList...) {
+  //if only a single value given
+  @if (length($ignoreList) == 1){
+      //it is probably a list variable so set ignore list to the variable
+      $ignoreList: nth($ignoreList,1);
+  }
+  //set up an empty $notOutput variable
+  $notOutput: '';
+  //for each item in the list
+  @each $not in $ignoreList {
+      //generate a :not([ignored_item]) segment for each item in the ignore list and put them back to back
+      $notOutput: $notOutput + ':not(#{$not})';
+  }
+  //output the full :not() rule including all ignored items
+  &#{$notOutput} {
+      @content;
+  }
+}

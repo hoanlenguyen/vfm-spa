@@ -1,0 +1,143 @@
+// BEGIN PAGINATION //
+
+.pagination-white{
+  .el-pagination{
+    background: #fff;
+  }
+}
+.el-pagination {
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 1.6rem 0;
+
+  button {
+    padding: 0;
+    border: none;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:hover {
+      color: $color-blue-n0;
+    }
+
+    &.btn-prev,
+    &.btn-next {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
+
+      .el-icon {
+        font-size: 1.6rem;
+        &:before {
+          display: block;
+          position: relative;
+
+          color: $color-grey-l16;
+        }
+
+        &:hover:before {
+          color: $color-blue-n0;
+        }
+      }
+
+      &[disabled="disabled"] {
+        color: $color-grey-l40;
+
+        cursor: not-allowed;
+
+        .el-icon:before {
+          color: $color-grey-l40;
+        }
+      }
+    }
+
+    &.btn-next {
+      margin-left: 1.2rem;
+      .el-icon {
+        &:before {
+          content: "\e6e9";
+        }
+      }
+    }
+
+    &.btn-prev {
+      margin-right: 1.2rem;
+      .el-icon {
+        &:before {
+          content: "\e6ea";
+        }
+      }
+    }
+  }
+
+  &.is-background {
+    .el-pager {
+      li {
+        background-color: #eef0f8;
+      }
+    }
+    .btn-prev,
+    .btn-next{
+      background-color: #eef0f8;
+    }
+  }
+}
+
+.el-pager {
+  display: inline-flex;
+
+  margin: 0;
+  padding: 0;
+
+  user-select: none;
+  list-style: none;
+  font-size: 0;
+
+  li {
+    min-width: 2.4rem;
+    margin: 0 1rem;
+    padding: 0.2rem 0;
+
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: $color-grey-n0;
+    text-align: center;
+
+    border-width: 2px 0;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+
+    &.more {
+      &:before {
+        content: "...";
+        display: block;
+        position: relative;
+
+        color: $color-grey-l16;
+      }
+
+      &:hover:before {
+        color: $color-blue-n0;
+      }
+    }
+
+    &.active {
+      font-weight: 500;
+      color: $color-grey-d20;
+
+      // border-bottom-color: $color-grey-d20;
+    }
+
+    &:hover:not(.active) {
+      color: $color-blue-n0;
+    }
+  }
+}
+
+// END PAGINATION //

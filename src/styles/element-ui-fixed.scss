@@ -1,0 +1,232 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 0px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    min-width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+// fix date-picker ui bug in filter-item
+.el-range-editor.el-input__inner {
+  display: inline-flex !important;
+}
+
+// to fix el-date-picker css style
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.el-transfer__button:first-child {
+  margin-bottom: 0 !important;
+}
+
+// To fixed styles of input -webkit-autofill
+.el-input {
+  &__inner {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: none;
+      background-color: #FFFFFF !important;
+      border-color: #E3E3E8;
+      -webkit-text-fill-color: #3F4254 !important;
+    }
+  }
+}
+
+.el-input {
+  &.w-100 {
+    width: 100% !important;
+  }
+}
+
+// To fixed styles of el-form-item validate
+.el-form-item {
+  &__error {
+    transition: none !important;
+  }
+}
+
+.el-form-item.is-error {
+  // Fixed vị trị hiển thị message error cho những input có width nhỏ
+  &.message-left {
+    .el-form-item {
+      &__error {
+        left: 0;
+        transform: translateX(0)
+      }
+    }
+  }
+
+  .el-form-item {
+    &__error {
+      position: absolute;
+      top: unset;
+      bottom: 100%;
+      left: 50%;
+      right: -50%;
+      width: fit-content;
+      transform: translateX(-50%);
+      background-color: #e53e3e;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      padding: 7px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 200ms linear !important;
+
+      &:after {
+        display: block;
+        content: "";
+        border: solid 5px #e53e3e;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+      }
+    }
+
+    &__content {
+      div:first-child:hover ~ div.el-form-item__error {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// To fixed styles for content of message component
+.el-message {
+  background-color: #9F0AE4;
+  color: #FFFFFF;
+  border: none;
+
+  &__icon {
+    font-size: 24px;
+    color: #FFFFFF !important;
+  }
+
+  &__content {
+    color: #FFFFFF !important;
+    line-height: 1.375;
+  }
+
+  &__closeBtn {
+    font-size: 24px;
+    color: #FFFFFF !important;
+  }
+
+  &--success {
+    background-color: #51bb25;
+  }
+
+  &--warning {
+    background-color: #FFA800;
+  }
+
+  &--error {
+    background-color: #F72D1D;
+  }
+
+  &.is-closable {
+    .el-message {
+      &__content {
+        padding-right: 32px;
+      }
+
+      &__closeBtn {
+        font-weight: 500;
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+// To fixed styles for pager
+.el-pager {
+  li {
+    padding: .2rem .3rem !important;
+  }
+}
+
+// To fixed styles for el-input-tag
+.el-input-tag {
+  &.input-tag-wrapper {
+    height: auto!important;
+    min-height: 40px;
+    display: flex!important;
+    flex-wrap: wrap;
+    padding: 2px 4px!important;
+  }
+
+  .el-tag {
+    margin: 4px 4px !important;
+  }
+}
+
+.input-numeric {
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #E3E3E8;
+  padding-left: 15px;
+  padding-right: 30px;
+  height: 40px;
+}

@@ -1,0 +1,279 @@
+// BEGIN GENERAL //
+
+.form-group {
+  &:not(.form-group-sm) {
+    .form-control-label {
+      ~ .form-control {
+        padding-top: 2rem;
+        padding-bottom: .4rem;
+
+        opacity: 0;
+      }
+    }
+
+    &.active {
+      .form-control-label {
+        ~ .form-control {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.form-group-sm {
+    .form-control:not(textarea) {
+      height: 2.8rem;
+
+      border-width: 0 1.2rem;
+    }
+
+    textarea.form-control {
+      padding: 0 1.2rem;
+    }
+  }
+}
+
+// END GENERAL //
+
+
+
+
+// BEGIN TEXTBOX //
+
+.form-control {
+  position: relative;
+
+  width: 100%;
+  height: 4.4rem;
+  padding: 0;
+
+  font-size: 1.4rem;
+  line-height: 1.4;
+
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: $border-radius-sm;
+  border-style: solid;
+  border-width: 0 1.6rem;
+  box-shadow: none;
+  color: $color-grey-d20;
+
+  &:focus {
+    background-color: transparent;
+    box-shadow: none;
+    color: $color-grey-d20;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: transparent;
+    color: $color-grey-l40;
+
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-text-fill-color: $color-grey-l40;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: transparent;
+
+    opacity: 1;
+  }
+}
+
+// END TEXTBOX //
+
+
+
+
+// BEGIN TEXTAREA //
+
+textarea {
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.form-control {
+    display: block;
+
+    height: 100%;
+    height: 9.2rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    padding: .8rem 1.6rem;
+    
+    border-width: 0;
+  }
+}
+
+// END TEXTAREA //
+
+
+
+
+// BEGIN TEXT VIEW //
+
+.form-group-static {
+  .form-control-text {
+    display: block;
+
+    min-height: 2rem;
+    margin: 0;
+
+    font-size: 1.4rem;
+    line-height: 1.4;
+
+    &:empty {
+      &:before {
+        content: '\2014';
+        display: inline-block;
+
+        color: $color-grey-l32;
+      }
+    }
+  }
+
+  &.form-group-sm {
+    .form-control-text {
+      min-height: 1.6rem;
+
+      font-size: 1.2rem;
+      line-height: 1.3333333333;
+    }
+  }
+}
+
+// END TEXT VIEW //
+
+
+
+
+// BEGIN NUMERIC TEXTBOX //
+
+.t-numeric-input {
+  position: relative;
+
+  .form-group {
+    .form-control {
+      border-left-width: 6rem;
+      border-right-width: 6rem;
+    }
+
+    .form-control-label {
+      padding-left: 6rem;
+    }
+
+    &.form-group-sm {
+      .form-control {
+        border-left-width: 3.6rem;
+        border-right-width: 3.6em;
+      }
+  
+      .form-control-label {
+        padding-left: 3.6rem;
+      }
+    }
+  }
+
+  .increase,
+  .decrease {
+    position: absolute;
+    top: 1px;
+    z-index: 1;
+
+    height: calc(100% - 2px);
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+
+    &.btn-icon-sm {
+      padding-left: .8rem;
+      padding-right: .8rem;
+    }
+
+  }
+
+  .increase {
+    right: 1px;
+    border-left: 1px solid $color-light-l08;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+
+  .decrease {
+    left: 1px;
+    border-right: 1px solid $color-light-l08;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+  }
+
+  &.controls-right {
+    .form-group {
+      .form-control {
+        border-left-width: 1.6rem;
+      }
+
+      .form-control-label {
+        padding-left: 1.6rem;
+      }
+
+      &.form-group-sm {
+        .form-control {
+          border-left-width: .8rem;
+        }
+  
+        .form-control-label {
+          padding-left: .8rem;
+        }
+      }
+    }
+
+    .increase,
+    .decrease {
+      height: calc(50% - 1px);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .increase {
+      border-bottom: 1px solid $color-light-l08;
+      border-radius: 0 .3rem 0 0;
+    }
+
+    .decrease {
+      right: 1px;
+      left: initial;
+      top: initial;
+      bottom: 1px;
+      
+      border-right: none;
+      border-left: 1px solid $color-light-l08;
+      border-radius: 0 0 .3rem;
+    }
+  }
+
+  &.without-controls {
+    .form-group {
+      .form-control {
+        border-left-width: 1.6rem;
+        border-right-width: 1.6rem;
+      }
+
+      &.form-group-sm {
+        .form-control {
+          border-left-width: 1.2rem;
+          border-right-width: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+// END NUMERIC TEXTBOX //

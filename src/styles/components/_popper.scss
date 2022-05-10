@@ -1,0 +1,44 @@
+// BEGIN POPPER //
+
+.el-popper {
+  // padding: 0;
+
+  background-color: $color-white;
+  border: 1px solid $color-light-l12;
+  border-radius: $border-radius-md;
+  @include box-shadow-overlay();
+
+  z-index: 10;
+
+  /* Not remove. Keep to cal position of dropdown menu */
+  .popper__arrow {
+    display: block;
+    width: 0;
+    height: 0;
+  }
+}
+
+.el-popper[x-placement^="top"] {
+  margin-bottom: .4rem;
+}
+
+.el-popper[x-placement^="bottom"] {
+  margin-top: .4rem;
+}
+
+.el-popper[x-placement^="right"] {
+  margin-left: .4rem;
+}
+
+.el-popper[x-placement^="left"] {
+  margin-right: .4rem;
+}
+
+@media (max-width: 480px) {
+  // Fix for notification dropdown-menu
+  .el-popper.w-abs-480 {
+    left: 0 !important;
+  }
+}
+
+// END POPPER //
